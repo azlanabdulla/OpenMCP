@@ -20,17 +20,24 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install ruff
+        pip install ruff pytest httpx
         pip install -r backend/requirements.txt
         pip install -r cli/requirements.txt
         
-    - name: Lint Backend
-      run: ruff check backend/app
+    - name: Lint and Test Backend
+      run: |
+        ruff check backend/app
+        pytest backend/tests
+      env:
+        DATABASE_URL: sqlite:///./test.db
       
-    - name: Lint CLI
-      run: ruff check cli/openmcp
+    - name: Lint and Test CLI
+      run: |
+        ruff check cli/openmcp
+        pytest cli/tests
       
-    - name: Test SDK build
+    - name: Test SDK build and runtime
       run: |
         cd sdk
         pip install .
+        pytest tests

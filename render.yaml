@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: openmcp-api
+    env: docker
+    dockerContext: ./backend
+    dockerfilePath: ./Dockerfile
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: openmcp-db
+          property: connectionString
+
+databases:
+  - name: openmcp-db
+    databaseName: openmcp_db
+    user: openmcp_user
