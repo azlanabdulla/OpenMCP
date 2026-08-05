@@ -1,0 +1,45 @@
+import { createContext, useState, useEffect, useContext } from 'react';
+import { api, setAuthToken, removeAuthToken, getAuthToken } from '../api/client';
+
+const AuthContext = createContext(null);
+
+export const AuthProvider = ({ children }) => {
+  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const initAuth = async () => {
+      const token = getAuthToken();
+      if (token) {
+        try {
+          const userData = await api.getMe();
+          setUser(userData);
+        } catch (err) {
+          removeAuthToken();
+        }
+      }
+      setLoading(false);
+    };
+    initAuth();
+  }, []);
+
+  const login = async (email, password) => {
+    const data = await api.login(email, password);
+    setAuthToken(data.access_token);
+    const userData = await api.getMe();
+    setUser(userData);
+  };
+
+  const logout = () => {
+    removeAuthToken();
+    setUser(null);
+  };
+
+  return (
+    <AuthContext.Provider value={{ user, login, logout, loading }}>
+      {!loading && children}
+    </AuthContext.Provider>
+  );
+};
+
+export const useAuth = () => useContext(AuthContext);
