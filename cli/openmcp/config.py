@@ -1,7 +1,6 @@
-import os
 import json
+import os
 from pathlib import Path
-from typing import Optional
 
 CONFIG_DIR = Path.home() / ".openmcp"
 CONFIG_FILE = CONFIG_DIR / "config.json"
@@ -28,7 +27,7 @@ def set_token(token: str) -> None:
     config["access_token"] = token
     save_config(config)
 
-def get_token() -> Optional[str]:
+def get_token() -> str | None:
     return load_config().get("access_token")
 
 def clear_token() -> None:

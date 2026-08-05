@@ -1,0 +1,2 @@
+[tool.ruff]
+ignore = ["BLE001", "TRY002", "SIM117", "F841"]

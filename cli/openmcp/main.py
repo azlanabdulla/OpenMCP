@@ -1,4 +1,5 @@
 import typer
+
 from openmcp.commands import auth, registry
 
 app = typer.Typer(

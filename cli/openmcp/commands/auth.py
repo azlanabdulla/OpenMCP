@@ -2,8 +2,8 @@ import typer
 from rich.console import Console
 from rich.prompt import Prompt
 
-from openmcp.client import OpenMCPClient
 from openmcp import config
+from openmcp.client import OpenMCPClient
 
 app = typer.Typer(help="Authentication commands.")
 console = Console()

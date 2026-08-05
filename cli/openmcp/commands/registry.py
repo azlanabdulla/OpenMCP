@@ -1,7 +1,7 @@
-import os
 import json
 import tarfile
 from pathlib import Path
+
 import typer
 from rich.console import Console
 from rich.table import Table
@@ -117,7 +117,7 @@ def install(package_name: str):
         # In a real scenario, we'd query /packages/{name}/versions to get the tarball URL.
         # Since we just have the stubbed S3, we'll simulate the download for now.
         console.print(f"[green]Found {package_name}[/green]")
-        console.print(f"[cyan]Downloading... (Stubbed - would fetch from S3)[/cyan]")
+        console.print("[cyan]Downloading... (Stubbed - would fetch from S3)[/cyan]")
         
         # Create mcp_modules dir
         install_dir = Path.cwd() / "mcp_modules" / package_name

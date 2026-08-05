@@ -1,5 +1,7 @@
 import httpx
+
 from openmcp import config
+
 
 class OpenMCPClient:
     def __init__(self):
@@ -63,5 +65,4 @@ class OpenMCPClient:
         with httpx.stream("GET", url) as r:
             r.raise_for_status()
             with open(dest_path, "wb") as f:
-                for chunk in r.iter_bytes():
-                    f.write(chunk)
+                f.writelines(r.iter_bytes())
