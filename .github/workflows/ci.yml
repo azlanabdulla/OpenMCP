@@ -43,7 +43,9 @@ jobs:
     - name: Lint and Test Backend
       run: |
         ruff check backend/app
-        pytest backend/tests
+        cd backend
+        alembic upgrade head
+        pytest tests
       
     - name: Lint and Test CLI
       run: |
