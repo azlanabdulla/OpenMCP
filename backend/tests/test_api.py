@@ -1,4 +1,5 @@
 from fastapi.testclient import TestClient
+from app.db.base import Base  # Ensure models are loaded
 from app.main import app
 
 client = TestClient(app)

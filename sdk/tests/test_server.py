@@ -16,8 +16,8 @@ def test_tool_decorator():
     server.register_tool(add)
     
     assert "add" in server.tools
-    tool_info = server.tools["add"]
-    assert tool_info["name"] == "add"
-    assert tool_info["description"] == "Add two numbers"
-    assert "a" in tool_info["inputSchema"]["properties"]
-    assert "b" in tool_info["inputSchema"]["properties"]
+    func = server.tools["add"]
+    assert func.__mcp_name__ == "add"
+    assert func.__mcp_description__ == "Add two numbers"
+    assert "a" in func.__mcp_schema__["properties"]
+    assert "b" in func.__mcp_schema__["properties"]
