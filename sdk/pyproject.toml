@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "openmcp-sdk"
+version = "0.1.0"
+description = "Developer SDK for building OpenMCP tools and servers."
+authors = [
+    { name = "OpenMCP", email = "hello@openmcp.org" }
+]
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+    "pydantic>=2.0.0"
+]
+
+[project.urls]
+Homepage = "https://github.com/azlanabdulla/OpenMCP"
