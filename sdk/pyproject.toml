@@ -17,3 +17,6 @@ dependencies = [
 
 [project.urls]
 Homepage = "https://github.com/azlanabdulla/OpenMCP"
+
+[tool.setuptools.packages.find]
+include = ["openmcp_sdk*"]

@@ -1,2 +1,2 @@
-[tool.ruff]
-ignore = ["BLE001", "TRY002", "SIM117", "F841"]
+[tool.ruff.lint]
+ignore = ["BLE001", "TRY002", "SIM117", "F841", "B008", "DTZ003"]
