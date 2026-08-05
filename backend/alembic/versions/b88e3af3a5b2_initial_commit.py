@@ -5,17 +5,18 @@ Revises:
 Create Date: 2026-08-06 01:21:11.211350
 
 """
-from typing import Sequence, Union
+from collections.abc import Sequence
 
-from alembic import op
 import sqlalchemy as sa
 from sqlalchemy.dialects import postgresql
 
+from alembic import op
+
 # revision identifiers, used by Alembic.
 revision: str = 'b88e3af3a5b2'
-down_revision: Union[str, Sequence[str], None] = None
-branch_labels: Union[str, Sequence[str], None] = None
-depends_on: Union[str, Sequence[str], None] = None
+down_revision: str | Sequence[str] | None = None
+branch_labels: str | Sequence[str] | None = None
+depends_on: str | Sequence[str] | None = None
 
 
 def upgrade() -> None:
@@ -133,7 +134,7 @@ def upgrade() -> None:
     sa.Column('id', sa.UUID(), nullable=False),
     sa.Column('package_id', sa.UUID(), nullable=False),
     sa.Column('version_string', sa.String(), nullable=False),
-    sa.Column('manifest_data', postgresql.JSONB(astext_type=Text()), nullable=True),
+    sa.Column('manifest_data', postgresql.JSONB(astext_type=sa.Text()), nullable=True),
     sa.Column('tarball_url', sa.String(), nullable=True),
     sa.Column('checksum', sa.String(), nullable=True),
     sa.Column('created_at', sa.DateTime(timezone=True), server_default=sa.text('(CURRENT_TIMESTAMP)'), nullable=False),

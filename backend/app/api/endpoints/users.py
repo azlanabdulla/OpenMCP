@@ -1,0 +1,20 @@
+from typing import Any
+
+from fastapi import APIRouter, Depends
+
+from app.api import deps
+from app.db.models.user import User
+from app.schemas.user import UserRead
+
+router = APIRouter()
+
+@router.get("/me", response_model=UserRead)
+def read_user_me(
+    current_user: User = Depends(deps.get_current_active_user),
+) -> Any:
+    """
+    Get current user profile.
+    """
+    return current_user
+
+# Additional endpoints (update profile, etc.) can be added here

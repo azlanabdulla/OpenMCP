@@ -1,10 +1,10 @@
 import re
 from typing import Any
-from sqlalchemy.orm import as_declarative, declared_attr
-import uuid
-from sqlalchemy.dialects.postgresql import UUID
+
 from sqlalchemy import Column, DateTime
+from sqlalchemy.orm import as_declarative, declared_attr
 from sqlalchemy.sql import func
+
 
 @as_declarative()
 class Base:
