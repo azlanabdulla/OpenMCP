@@ -43,6 +43,11 @@ switch ($Command) {
         Write-Host "Installing docs dependencies..." -ForegroundColor Green
         pip install mkdocs-material
         
+        Write-Host "Installing CLI in dev mode..." -ForegroundColor Green
+        Push-Location cli
+        pip install -e .
+        Pop-Location
+        
         Write-Host "Installing SDK in dev mode..." -ForegroundColor Green
         Push-Location sdk
         pip install -e .

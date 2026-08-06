@@ -33,6 +33,8 @@ install:
 	cd web && npm install
 	@echo "Installing docs dependencies..."
 	pip install mkdocs-material || true
+	@echo "Installing CLI in dev mode..."
+	cd cli && pip install -e .
 	@echo "Installing SDK in dev mode..."
 	cd sdk && pip install -e .
 
