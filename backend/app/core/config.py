@@ -26,9 +26,9 @@ class Settings(BaseSettings):
         raise ValueError(v)
 
     POSTGRES_SERVER: str = "localhost"
-    POSTGRES_USER: str = "openmcp"
+    POSTGRES_USER: str = "openmcp_user"
     POSTGRES_PASSWORD: str = "openmcp_password"
-    POSTGRES_DB: str = "openmcp_dev"
+    POSTGRES_DB: str = "openmcp_db"
     POSTGRES_PORT: str = "5432"
     SQLALCHEMY_DATABASE_URI: PostgresDsn | None = None
 
