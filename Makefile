@@ -1,12 +1,18 @@
-.PHONY: help up down logs db-shell redis-shell
+.PHONY: help up down logs db-shell install dev-backend dev-web docs
 
 help:
 	@echo "OpenMCP Makefile commands:"
-	@echo "  up           - Start local development environment (PostgreSQL, Redis) in the background"
-	@echo "  down         - Stop local development environment"
+	@echo "Docker Environment:"
+	@echo "  up           - Start local Docker environment in the background"
+	@echo "  down         - Stop local Docker environment"
 	@echo "  logs         - Tail logs from all containers"
 	@echo "  db-shell     - Open PostgreSQL shell"
-	@echo "  redis-shell  - Open Redis shell"
+	@echo ""
+	@echo "Local Development:"
+	@echo "  install      - Install frontend, backend, and docs dependencies"
+	@echo "  dev-backend  - Run backend server locally (uvicorn)"
+	@echo "  dev-web      - Run web frontend locally (vite)"
+	@echo "  docs         - Run mkdocs server locally"
 
 up:
 	docker compose up -d
@@ -18,7 +24,23 @@ logs:
 	docker compose logs -f
 
 db-shell:
-	docker compose exec postgres psql -U openmcp -d openmcp_dev
+	docker compose exec db psql -U openmcp_user -d openmcp_db
 
-redis-shell:
-	docker compose exec redis redis-cli
+install:
+	@echo "Installing backend dependencies..."
+	cd backend && pip install -r requirements.txt || true
+	@echo "Installing web dependencies..."
+	cd web && npm install
+	@echo "Installing docs dependencies..."
+	pip install mkdocs-material || true
+	@echo "Installing SDK in dev mode..."
+	cd sdk && pip install -e .
+
+dev-backend:
+	cd backend && uvicorn app.main:app --reload
+
+dev-web:
+	cd web && npm run dev
+
+docs:
+	mkdocs serve

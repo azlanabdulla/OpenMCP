@@ -53,26 +53,24 @@ OpenMCP consists of four tightly-integrated components:
    cd OpenMCP
    ```
 
-2. **Start Infrastructure Services**
+2. **Install Dependencies**
+   ```bash
+   make install
+   ```
+   This command installs the requirements for the backend, web frontend, and documentation.
+
+3. **Start Infrastructure Services (Docker)**
    ```bash
    make up
    ```
-   This will start PostgreSQL and Redis via Docker Compose.
+   This starts PostgreSQL in the background via Docker Compose.
 
-3. **Backend Setup**
+4. **Run Local Development Servers**
+   Open separate terminal windows and run:
    ```bash
-   cd backend
-   python -m venv .venv
-   source .venv/bin/activate  # On Windows: .venv\Scripts\activate
-   pip install -r requirements.txt
-   uvicorn app.main:app --reload
-   ```
-
-4. **Frontend Setup**
-   ```bash
-   cd frontend
-   pnpm install
-   pnpm dev
+   make dev-backend   # Starts the FastAPI backend
+   make dev-web       # Starts the Vite web frontend
+   make docs          # Starts the MkDocs local server
    ```
 
 ---
