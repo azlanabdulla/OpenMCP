@@ -54,23 +54,32 @@ OpenMCP consists of four tightly-integrated components:
    ```
 
 2. **Install Dependencies**
-   ```bash
-   make install
-   ```
-   This command installs the requirements for the backend, web frontend, and documentation.
+   - **Mac/Linux**: `make install`
+   - **Windows**: `.\dev.ps1 install`
+   
+   *This command installs the requirements for the backend, web frontend, SDK, and documentation.*
 
 3. **Start Infrastructure Services (Docker)**
-   ```bash
-   make up
-   ```
-   This starts PostgreSQL in the background via Docker Compose.
+   - **Mac/Linux**: `make up`
+   - **Windows**: `.\dev.ps1 up`
+   
+   *This starts PostgreSQL in the background via Docker Compose.*
 
 4. **Run Local Development Servers**
-   Open separate terminal windows and run:
+   Open separate terminal windows and run the commands for your OS:
+   
+   **Mac/Linux:**
    ```bash
    make dev-backend   # Starts the FastAPI backend
    make dev-web       # Starts the Vite web frontend
    make docs          # Starts the MkDocs local server
+   ```
+   
+   **Windows:**
+   ```powershell
+   .\dev.ps1 dev-backend   # Starts the FastAPI backend
+   .\dev.ps1 dev-web       # Starts the Vite web frontend
+   .\dev.ps1 docs          # Starts the MkDocs local server
    ```
 
 ---
