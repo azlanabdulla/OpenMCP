@@ -55,7 +55,7 @@ switch ($Command) {
     }
     "dev-backend" {
         Push-Location backend
-        uvicorn app.main:app --reload
+        python -m uvicorn app.main:app --reload
         Pop-Location
     }
     "dev-web" {
@@ -64,7 +64,7 @@ switch ($Command) {
         Pop-Location
     }
     "docs" {
-        mkdocs serve
+        python -m mkdocs serve
     }
     default {
         Write-Host "Unknown command: $Command. Run '.\dev.ps1 help' to see available commands." -ForegroundColor Red
