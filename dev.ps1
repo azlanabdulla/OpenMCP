@@ -64,7 +64,7 @@ switch ($Command) {
         Pop-Location
     }
     "docs" {
-        python -m mkdocs serve
+        python -m mkdocs serve -a 127.0.0.1:8001
     }
     default {
         Write-Host "Unknown command: $Command. Run '.\dev.ps1 help' to see available commands." -ForegroundColor Red
