@@ -1,9 +1,9 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
+import app.db.base  # Ensure all models are loaded for SQLAlchemy relationships
 from app.api.router import api_router
 from app.core.config import settings
-import app.db.base  # Ensure all models are loaded for SQLAlchemy relationships
 
 app = FastAPI(
     title=settings.PROJECT_NAME,
