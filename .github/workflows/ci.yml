@@ -14,9 +14,9 @@ jobs:
       postgres:
         image: postgres:15
         env:
-          POSTGRES_USER: openmcp
+          POSTGRES_USER: openmcp_user
           POSTGRES_PASSWORD: openmcp_password
-          POSTGRES_DB: openmcp_dev
+          POSTGRES_DB: openmcp_db
         ports:
           - 5432:5432
         options: >-
