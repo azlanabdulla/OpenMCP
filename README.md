@@ -49,7 +49,7 @@ OpenMCP consists of four tightly-integrated components:
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/OpenMCP/OpenMCP.git
+   git clone https://github.com/azlanabdulla/OpenMCP.git
    cd OpenMCP
    ```
 
