@@ -66,19 +66,29 @@ OpenMCP consists of four tightly-integrated components:
    *This starts PostgreSQL in the background via Docker Compose.*
 
 4. **Run Local Development Servers**
-   Open separate terminal windows and run the commands for your OS:
+   Open separate terminal windows. **Make sure you are in the `OpenMCP` root folder in every terminal** (e.g. `cd OpenMCP`). Then run the following commands:
    
    **Mac/Linux:**
    ```bash
+   # Terminal 1
    make dev-backend   # Starts the FastAPI backend
+   
+   # Terminal 2
    make dev-web       # Starts the Vite web frontend
+   
+   # Terminal 3
    make docs          # Starts the MkDocs local server
    ```
    
    **Windows:**
    ```powershell
+   # Terminal 1
    .\dev.ps1 dev-backend   # Starts the FastAPI backend
+   
+   # Terminal 2
    .\dev.ps1 dev-web       # Starts the Vite web frontend
+   
+   # Terminal 3
    .\dev.ps1 docs          # Starts the MkDocs local server
    ```
 
