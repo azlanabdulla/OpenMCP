@@ -88,7 +88,7 @@ OpenMCP consists of four tightly-integrated components:
 
 ```bash
 # Login to OpenMCP
-openmcp login
+openmcp auth login
 
 # Install a tool
 openmcp install github
@@ -99,9 +99,6 @@ openmcp publish
 
 # Search for tools
 openmcp search "weather API"
-
-# View tool info
-openmcp info github
 ```
 
 ---
